@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae499b18138b4909a3ffacfbc40ec65a, type: 3}
+  m_Name: Scene Loader Menu
+  m_EditorClassIdentifier: 
+  StartScene: {fileID: 102900000, guid: a83897b1c70066359bfe121ab60a52e4, type: 3}
+  OptionScene: {fileID: 102900000, guid: e413bec37d94ba8199c1643e5ddc1936, type: 3}
+  InGameScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+  InGameScene2: {fileID: 102900000, guid: 951a0c737c2f94879b76fb0491a043f0, type: 3}
+  GameOverScene: {fileID: 102900000, guid: 8907b078eef5ea468bb47dedafaf4e28, type: 3}
