@@ -23,7 +23,7 @@ public class Block : MonoBehaviour {
 //        else
 //            _sceneStatus = FindObjectOfType<SceneStatus>();
 
-        _sceneStatus.addToTotalScore();
+        _sceneStatus.AddToTotalScore();
     }
 
 //    void Awake() {
@@ -43,7 +43,7 @@ public class Block : MonoBehaviour {
 //            _sceneStatus = FindObjectOfType<SceneStatus>();
 //        }
 
-        _sceneStatus.addToScore(ScoreValue);
+        _sceneStatus.AddToScore(ScoreValue);
 //        if (BlockBreaker.Score != null)
 //            BlockBreaker.Score.add();
         Destroy(gameObject);
