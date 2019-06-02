@@ -8,44 +8,25 @@ public class Block : MonoBehaviour {
     [SerializeField] AudioClip breakSound;
 
     [SerializeField] int ScoreValue = 1;
+    [SerializeField] GameObject breakVFX;
 
-    //todo refactor
-    //[SerializeField] SceneStatus sStatus;
     private SceneStatus _sceneStatus;
 
     private void Start() {
-        //todo refactor
         _sceneStatus = FindObjectOfType<SceneStatus>();
-//        if (sStatus != null) {
-//            _sceneStatus = sStatus;
-//            Debug.Log("BLOCK START SSTATUS YOOOOO");
-//        }
-//        else
-//            _sceneStatus = FindObjectOfType<SceneStatus>();
-
-        _sceneStatus.AddToTotalScore();
+        if (_sceneStatus != null)
+            _sceneStatus.AddToTotalScore();
     }
-
-//    void Awake() {
-//        if (sStatus != null) {
-//            _sceneStatus = sStatus;
-//            Debug.Log("BLOCK START SSTATUS YOOOOO");
-//        }
-////        else
-////            _sceneStatus = FindObjectOfType<SceneStatus>();
-//    }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (breakSound)
             AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position, 0.5f);
-//        if (_sceneStatus == null) {
-//            Debug.Log("BLOCK: SceneStatus is null");
-//            _sceneStatus = FindObjectOfType<SceneStatus>();
-//        }
-
         _sceneStatus.AddToScore(ScoreValue);
-//        if (BlockBreaker.Score != null)
-//            BlockBreaker.Score.add();
+        ByDestroy();
         Destroy(gameObject);
+    }
+
+    private void ByDestroy() {
+        GameObject _destoryVFX = Instantiate(breakVFX, transform.position, transform.rotation);
     }
 }

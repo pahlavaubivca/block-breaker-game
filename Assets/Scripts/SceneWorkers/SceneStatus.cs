@@ -12,6 +12,7 @@ namespace BlockBreaker {
         [SerializeField] public int totalBlocksCount;
         private int _destroyedBlocksCount;
         private SceneAsset _nextScene;
+        private bool _iMustBeDestroy;
 
         /** Block before destroy call this method for count destrouded blocs*/
         public void AddToScore(int scoreValue) {
@@ -19,19 +20,14 @@ namespace BlockBreaker {
             _destroyedBlocksCount++;
             Debug.Log(String.Format("{0}/{1}", _destroyedBlocksCount, totalBlocksCount));
             scoreText.text = score.ToString();
-            if (_destroyedBlocksCount == totalBlocksCount)
-                getNextLevel();
+            /* check score and if break block == totalBlocks - load next scene*/
+            if (_destroyedBlocksCount == totalBlocksCount && sceneLoaderMenu != null && _nextScene != null)
+                sceneLoaderMenu.loadTheScene(_nextScene);
         }
 
         /** use for each Block class for count all blocks in scene*/
         public void AddToTotalScore() {
             totalBlocksCount++;
-        }
-
-        private void getNextLevel() {
-            if (sceneLoaderMenu != null && _nextScene != null) {
-                sceneLoaderMenu.loadTheScene(_nextScene);
-            }
         }
 
         private void Awake() {
@@ -49,7 +45,7 @@ namespace BlockBreaker {
         private void Start() {
             SceneManager.sceneLoaded += onSceneLoaded;
             _nextScene = FindObjectOfType<NextSceneStorage>()?.StoredScene;
-            Debug.Log("next sccene is " + _nextScene.name);
+            Debug.Log("Next scene is " + _nextScene.name);
         }
 
         private void onSceneLoaded(Scene scene, LoadSceneMode mode) {
@@ -57,15 +53,17 @@ namespace BlockBreaker {
             NextSceneStorage _nStore = FindObjectOfType<NextSceneStorage>();
             if (_nStore != null) {
                 _nextScene = _nStore.StoredScene;
-                Debug.Log("next scene is " + _nextScene.name);
+                Debug.Log("Next scene is " + _nextScene.name);
             }
-            else {
-                Debug.Log("NextSceneStorage not found.");
+            else if (gameObject != null) {
+                SceneManager.sceneLoaded -= onSceneLoaded;
+                Destroy(gameObject);
+                Debug.Log("SceneStatus destroy itself");
             }
         }
 
         private void reset() {
-            Debug.Log("reset");
+            Debug.Log("RESET");
             totalBlocksCount = 0;
             score = 0;
             scoreText.text = score.ToString();

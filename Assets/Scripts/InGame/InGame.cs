@@ -16,7 +16,7 @@ public class InGame : MonoBehaviour {
     void Update() {
         if (Input.anyKey) {
 //        if (!String.IsNullOrEmpty(Input.inputString)) {
-            Debug.Log(Input.inputString);
+//            Debug.Log(Input.inputString);
             if (Input.GetKey(KeyCode.Escape)) {
                 sceneLoaderMenu.GetStartScene();
             }
