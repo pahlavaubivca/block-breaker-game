@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour {
         ballY = pedal.transform.position.y + heightOfPedal + (heightOfBall / 2);
         hasStarted = false;
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
