@@ -46,10 +46,10 @@ public class Ball : MonoBehaviour {
 
     private void ballOnPedal() {
 //        Debug.Log(ballY + "|" + pedal.transform.position.x);
-//        Vector2 targetPosition = new Vector2(pedal.transform.position.x, ballY - 0.2f);
-//        transform.position = targetPosition;
-        Vector2 pedalPosition = new Vector2(pedal.transform.position.x, pedal.transform.position.y);
-        transform.position = pedalPosition + diff;
+        Vector2 targetPosition = new Vector2(pedal.transform.position.x, ballY - 0.2f);
+        transform.position = targetPosition;
+//        Vector2 pedalPosition = new Vector2(pedal.transform.position.x, pedal.transform.position.y);
+//        transform.position = pedalPosition + diff;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

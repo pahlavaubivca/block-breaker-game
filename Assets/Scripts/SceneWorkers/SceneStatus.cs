@@ -21,8 +21,8 @@ namespace BlockBreaker {
             Debug.Log(String.Format("{0}/{1}", _destroyedBlocksCount, totalBlocksCount));
             scoreText.text = score.ToString();
             /* check score and if break block == totalBlocks - load next scene*/
-            //if (_destroyedBlocksCount == totalBlocksCount && sceneLoaderMenu != null && _nextScene != null)
-               // sceneLoaderMenu.loadTheScene(_nextScene);
+            if (_destroyedBlocksCount == totalBlocksCount && sceneLoaderMenu != null && _nextScene != null)
+                sceneLoaderMenu.loadTheScene(_nextScene);
         }
 
         /** use for each Block class for count all blocks in scene*/
